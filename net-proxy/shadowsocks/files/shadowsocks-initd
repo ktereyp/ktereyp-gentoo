@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+SHADOWSOCKS_PID="--pidfile /var/run/shadowsocks.pid"
+SHADOWSOCKS_LOG="/var/log/shadowsocks.log"
+
+depend() {
+    need net
+        use logger
+}
+
+start() {
+    ebegin "Starting shadowsocks"
+        start-stop-daemon --start --name shadowsocks \
+        $SHADOWSOCKS_PID --make-pid \
+        --exec python2 sslocal -c /etc/shadowsocks.json > $SHADOWSOCKS_PID 2>&1 &
+        eend $?
+}
+
+stop() {
+    ebegin "Stopping shadowsocks"
+        start-stop-daemon --stop --name shadowsocks $SHADOWSOCKS_PID \
+        --exec python2 sslocal -c /etc/shadowsocks.json
+        eend $?
+}
+
+
