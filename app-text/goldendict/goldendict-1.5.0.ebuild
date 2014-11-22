@@ -5,12 +5,12 @@
 EAPI=4
 PLOCALES="ar_SA bg_BG cs_CZ de_DE el_GR it_IT lt_LT ru_RU uk_UA vi_VN zh_CN"
 
-inherit l10n qt4-r2 git-2
+inherit l10n qt4-r2
+#inherit l10n qt4-r2 git-2
 
 DESCRIPTION="Feature-rich dictionary lookup program"
 HOMEPAGE="http://goldendict.org/"
-#SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
-EGIT_REPO_URI="git://github.com/goldendict/goldendict.git"
+SRC_URI="https://github.com/goldendict/goldendict/archive/1.5.0-RC.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -31,14 +31,12 @@ RDEPEND="
 		media-libs/phonon
 	) )
 	kde? ( media-libs/phonon )
-	>=media-libs/libao-1.1.0-r1
-	>=dev-libs/lzo-2.06
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-S=${WORKDIR}
+S=${WORKDIR}/goldendict-1.5.0-RC
 
 #PATCHES=( "${FILESDIR}/${P}-gcc-4.7.patch" )
 
