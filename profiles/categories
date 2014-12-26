@@ -1,2 +1,6 @@
-app-office 
-app-text 
+app-misc  
+app-office  
+app-text  
+dev-libs  
+dev-util  
+net-proxy
