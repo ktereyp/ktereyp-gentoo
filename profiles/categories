@@ -1,3 +1,4 @@
+app-editors
 app-misc  
 app-office  
 app-text  
@@ -6,3 +7,7 @@ dev-util
 net-proxy
 www-plugins
 x11-themes
+games-util
+x11-plugins
+dev-qt
+sys-firmware
