@@ -20,11 +20,19 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
+	net-libs/grpc
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 "
+src_configure() {
+        local mycmakeargs=(
+                -DBUILD_SHARED_LIBS=OFF
+        )
+
+        cmake_src_configure
+}
 
 src_install() {
 	local dir="/opt/${PN}"
