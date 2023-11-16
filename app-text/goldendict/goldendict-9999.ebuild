@@ -33,6 +33,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
+	dev-qt/qtspeech:5
 	media-libs/libvorbis
 	media-libs/tiff:0
 	sys-libs/zlib
@@ -59,7 +60,7 @@ src_prepare() {
 	sed -i -e '/PREFIX = /s:/usr/local:/usr:' ${PN}.pro || die
 
 	# add trailing semicolon
-	sed -i -e '/^Categories/s/$/;/' redist/org.${PN}.GoldenDict.desktop || die
+	sed -i -e '/^Categories/s/$/;/' redist/io.github.xiaoyifang.goldendict_ng.desktop || die
 
 	echo "QMAKE_CXXFLAGS_RELEASE = $CXXFLAGS" >> ${PN}.pro
 	echo "QMAKE_CFLAGS_RELEASE = $CFLAGS" >> ${PN}.pro
@@ -94,10 +95,9 @@ install_locale() {
 
 src_install() {
 	dobin ${PN}
-	domenu redist/org.${PN}.GoldenDict.desktop
+	domenu redist/io.github.xiaoyifang.goldendict_ng.desktop
 	doicon redist/icons/${PN}.png
 
-	insinto /usr/share/${PN}/help
-	doins help/gdhelp_en.qch
+	#insinto /usr/share/${PN}/help
 	plocale_for_each_locale install_locale
 }
